@@ -30,6 +30,16 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/media', {
+        templateUrl: 'views/media.html',
+        controller: 'MediaCtrl',
+        controllerAs: 'media'
+      })
+      .when('/contact', {
+        templateUrl: 'views/contact.html',
+        controller: 'ContactCtrl',
+        controllerAs: 'contact'
+      })
       .otherwise({
         redirectTo: '/'
       });

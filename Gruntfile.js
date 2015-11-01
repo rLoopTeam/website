@@ -371,7 +371,7 @@ module.exports = function (grunt) {
     ngtemplates: {
       dist: {
         options: {
-          module: 'rloopNew2App',
+          module: 'rLoop',
           htmlmin: '<%= htmlmin.dist.options %>',
           usemin: 'scripts/scripts.js'
         },
@@ -424,6 +424,11 @@ module.exports = function (grunt) {
           expand: true,
           cwd: '.',
           src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
+          dest: '<%= yeoman.dist %>'
+        }, {
+          expand: true,
+          cwd: '.',
+          src: 'bower_components/font-awesome/fonts/*',
           dest: '<%= yeoman.dist %>'
         }]
       },

@@ -32,31 +32,37 @@
               <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="#/">rLoop</a>
+            <a class="navbar-brand" href="#/"><img src="images/logo.png" alt="rLoop"/></a>
           </div>
 
           <div class="collapse navbar-collapse" id="js-navbar-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
               <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
+              <li><a ng-href="#/media">Media</a></li>
+              <li><a ng-href="#/contact">Contact</a></li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container">
     <div ng-view=""></div>
-    </div>
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
+    <footer>
+      <div class="navbar">
+        <ul class="nav navbar-nav">
+          <li><a href="https://reddit.com/r/rLoop"><i class="fa fa-reddit"></i></a></li>
+          <li><a href="https://www.youtube.com/channel/UC-jcnD9Q4hfwq9Jt3EmqFyg"><i class="fa fa-youtube"></i></a></li>
+          <li><a href="https://twitter.com/rLoopTeam"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="https://facebook.com/rloopteam"><i class="fa fa-facebook"></i></a></li>
+        </ul>
+      <!-- <ul class="legal">
+        <li><a class="terms" href="under-construction.html">Terms of Service</a></li>
+        <li><a class="privacy" href="under-construction.html">Privacy Policy</a></li>
+      </ul> -->
     </div>
-
+    </footer>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -89,6 +95,8 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/media.js"></script>
+        <script src="scripts/controllers/contact.js"></script>
         <!-- endbuild -->
 </body>
 </html>
