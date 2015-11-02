@@ -8,10 +8,11 @@
  * Controller of the rLoop
  */
 angular.module('rLoop')
-  .controller('MediaCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MediaCtrl', function ($scope) {
+    $scope.noWrapSlides = false;
+  	var slides = $scope.slides = [
+  		{"image": "images/media/glass-angle.jpg", "text": "1"},
+  		{"image": "images/media/pod-exiting-tube.jpg", "text": "2"},
+  		{"image": "images/media/tiltshift.jpg", "text": "3"}
+  	];
   });

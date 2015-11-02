@@ -1,4 +1,13 @@
 
 <div class="container">
-	<p>This is the media view.</p>
+	<h1>Media</h1>
+
+	<uib-carousel interval="4000" no-wrap="noWrapSlides">
+      <uib-slide ng-repeat="slide in slides" active="slide.active">
+        <img ng-src="{{slide.image}}" style="margin:auto;">
+        <div class="carousel-caption">
+          <h4>{{slide.text}}</h4>
+        </div>
+      </uib-slide>
+    </uib-carousel>
 </div>

@@ -33,11 +33,14 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
   color: #FFF;
   padding: 8px 64px;
-  font-size: 24px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 200;
+  li > a {
+    text-transform: uppercase;
+  }
 }
 .navbar-brand > img {
-  margin-top:-15px;
+  margin-top:-10px;
 }
 
 body {
@@ -78,6 +81,18 @@ footer.navbar{
   margin-bottom: 2em;
   color: #FFF;
   text-align: center;
+
+  p.lead {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    width: 50%;
+    text-align: left;
+    text-transform: uppercase;
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 12px 20px 12px 5%;
+    font-weight: 200;
+    border-radius: 0px 5px 5px 0px;
+  }
 }
 
 
