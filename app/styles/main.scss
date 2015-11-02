@@ -19,8 +19,14 @@ $navbar-default-link-active-bg:            transaparent;
   padding: 0.2em 0;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
 body {
-  padding: 0;
+  /* Margin bottom by footer height */
+  padding:0;
+  margin-bottom: 60px;
 }
 
 .navbar-default{
@@ -45,6 +51,12 @@ body.home{
 
 footer.navbar{
   font-size:2em;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .main-content > .container {
@@ -52,7 +64,7 @@ footer.navbar{
     box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
     position: relative;
     margin-bottom: 2em;
-
+    margin-top:100px;
     h1 {
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
       padding: 12px 48px 24px;
