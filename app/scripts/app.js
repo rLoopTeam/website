@@ -17,7 +17,9 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'vcRecaptcha',
+    'jp.ng-bs-animated-button'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -40,6 +42,11 @@ angular
         templateUrl: 'views/contact.html',
         controller: 'ContactCtrl',
         controllerAs: 'contact'
+      })
+      .when('/contact-thankyou', {
+        templateUrl: 'views/contact-thankyou.html',
+        controller: 'ContactThankyouCtrl',
+        controllerAs: 'contact-thankyou'
       })
       .otherwise({
         redirectTo: '/'

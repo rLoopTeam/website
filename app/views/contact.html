@@ -1,0 +1,67 @@
+
+<div class="container">
+	<h1>Contact</h1>
+	<!-- create our form -->
+    <form name="contactForm" novalidate ng-submit="submit()">
+        
+        <!-- name field -->
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="name" class="form-control" 
+                ng-model="contact.name"
+                ng-minlength="5"
+                ng-maxlength="500"
+                required>
+                
+            <div class="help-block" ng-messages="contactForm.name.$error" ng-if="contactForm.name.$touched">
+                <p ng-message="minlength">Your name is too short.</p>
+                <p ng-message="maxlength">Your name is too long.</p>
+                <p ng-message="required">Your name is required.</p>
+            </div>
+        </div>
+        
+        <!-- email field -->
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="mail" class="form-control" 
+                ng-model="contact.mail"
+                required>
+
+            <div class="help-block" ng-messages="contactForm.mail.$error" ng-if="contactForm.mail.$touched">
+	            <p ng-message="required">This field is required</p>
+	            <p ng-message="email">This needs to be a valid email</p>
+        	</div>
+        </div>
+        
+        <!-- message field -->
+        <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" class="form-control" 
+                ng-model="contact.message"
+                ng-minlength="10"
+                ng-maxlength="5000"
+                required></textarea>
+
+            <div class="help-block" ng-messages="contactForm.message.$error" ng-if="contactForm.message.$touched">
+	            <p ng-message="required">This field is required</p>
+	            <p ng-message="minlength">Your name is too short.</p>
+                <p ng-message="maxlength">Your name is too long.</p>
+        	</div>
+        </div>
+
+        <div class="form-group">
+    		<div vc-recaptcha key="'6LdEOBATAAAAAATunIIVBuDIsthNYszmg9LNrEyv'" on-create="setWidgetId(widgetId)"
+                    on-success="setResponse(response)"
+                    on-expire="cbExpiration()"></div>
+
+            <div class="help-block" ng-messages="captcha.$error" ng-if="contactForm.captcha.invalid">
+                <p ng-message="invalid">This field is required</p>
+            </div>
+        </div>
+
+        <div class="form-group" style="margin-top:1em;">
+            <jp-ng-bs-animated-button is-submitting="isSubmitting" result="result" options="options"></jp-ng-bs-animated-button>
+        </div>
+        
+    </form>
+</div>
