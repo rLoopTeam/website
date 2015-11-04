@@ -3,21 +3,34 @@
 describe('Controller: ContactCtrl', function () {
 
   // load the controller's module
-  beforeEach(module('rLoop'));
+  beforeEach(angular.mock.module('rLoop'));
 
   var ContactCtrl,
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
+  beforeEach(inject(function ($controller, $rootScope, $q, _vcRecaptchaService_, _myexternalip_) {
     scope = $rootScope.$new();
     ContactCtrl = $controller('ContactCtrl', {
       $scope: scope
       // place here mocked dependencies
     });
+
+    scope.contactForm = {};
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(ContactCtrl.awesomeThings.length).toBe(3);
+  it('should reject invalid form submissions', function () {
+    scope.contactForm.$invalid = true;
+    scope.captcha.response = false;
+    
+    scope.submit().then(function(){
+      done(new Error('Form submit should not resolve'));
+    }, function(response){
+      done();
+    });
   });
+
+  /*  var d = $q.defer();
+    spyOn(_myexternalip_, 'getIp').and.returnValue(d.promise);
+    d.reject(); */
 });

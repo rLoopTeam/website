@@ -9,7 +9,6 @@
  */
 angular.module('rLoop')
   .controller('ContactCtrl', function ($scope, vcRecaptchaService, Parse, $location, $q, myexternalip, config) {
-    
     //RECAPTCHA STUFF
     $scope.captcha = {
       key: config.reCaptcha.key,

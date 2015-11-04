@@ -22,7 +22,7 @@
 
     <!-- Add your site or application content here -->
     <div class="header">
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="HeaderNavCtrl">
+      <div class="navbar navbar-default" role="navigation" ng-controller="HeaderNavCtrl">
         <div class="container">
           <div class="navbar-header">
 
@@ -42,7 +42,14 @@
               <li ng-class="{ active: isActive('/about')}"><a ng-href="#/about">About</a></li>
               <li ng-class="{ active: isActive('/media')}"><a ng-href="#/media">Media</a></li>
               <li ng-class="{ active: isActive('/contact')}"><a ng-href="#/contact">Contact</a></li>
+              <li><a href="http://rloop.tictail.com/" target="_blank">Shop</a></li>
             </ul>
+
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" class="navbar-right donate-form">
+              <input name="cmd" value="_s-xclick" type="hidden">
+              <input name="hosted_button_id" value="UXHXGC4KCPKDE" type="hidden">
+              <button type="submit" class="btn btn-primary btn-large">Donate</button>
+            </form>
           </div>
         </div>
       </div>
@@ -51,7 +58,7 @@
     <div ng-view="" class="main-content"></div>
 
     <footer class="navbar">
-      <ul class="nav navbar-nav">
+      <ul class="nav nav-pills">
         <li><a href="https://reddit.com/r/rLoop"><i class="fa fa-reddit"></i></a></li>
         <li><a href="https://www.youtube.com/channel/UC-jcnD9Q4hfwq9Jt3EmqFyg"><i class="fa fa-youtube"></i></a></li>
         <li><a href="https://twitter.com/rLoopTeam"><i class="fa fa-twitter"></i></a></li>
@@ -103,8 +110,8 @@
     <script src="scripts/controllers/contact.js"></script>
     <script src="scripts/controllers/headernav.js"></script>
     <script src="scripts/controllers/body.js"></script>
-    <script src="scripts/services/parse.js"></script>
     <script src="scripts/controllers/contact-thankyou.js"></script>
+    <script src="scripts/services/parse.js"></script>
     <script src="scripts/services/myexternalip.js"></script>
     <!-- endbuild -->
 </body>
