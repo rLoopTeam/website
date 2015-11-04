@@ -50,9 +50,9 @@
         </div>
 
         <div class="form-group">
-    		<div vc-recaptcha key="'6LdEOBATAAAAAATunIIVBuDIsthNYszmg9LNrEyv'" on-create="setWidgetId(widgetId)"
-                    on-success="setResponse(response)"
-                    on-expire="cbExpiration()"></div>
+    		<div vc-recaptcha key="captcha.key" on-create="captcha.setWidgetId(widgetId)"
+                    on-success="captcha.setResponse(response)"
+                    on-expire="captcha.cbExpiration()"></div>
 
             <div class="help-block" ng-messages="captcha.$error" ng-if="contactForm.captcha.invalid">
                 <p ng-message="invalid">This field is required</p>
@@ -60,7 +60,7 @@
         </div>
 
         <div class="form-group" style="margin-top:1em;">
-            <jp-ng-bs-animated-button is-submitting="isSubmitting" result="result" options="options"></jp-ng-bs-animated-button>
+            <jp-ng-bs-animated-button is-submitting="submitBtn.isSubmitting" result="submitBtn.result" options="submitBtn.options"></jp-ng-bs-animated-button>
         </div>
         
     </form>

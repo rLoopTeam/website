@@ -1,3 +1,4 @@
+/* global Parse */
 'use strict';
 
 /**
@@ -5,11 +6,12 @@
  * @name rloop.Parse
  * @description
  * # Parse
- * Service in the rloop.
+ * Factory in the rloop.
  */
 angular.module('rLoop')
-  .service('Parse', function () {
-    var app_id = "1234";
-    var js_key = "5678";
-    Parse.initialize(app_id, js_key);
-  });
+  .factory('Parse', ['$window', 'config', function ($window, config) {
+    //this function can be called as many times as necessary
+    Parse.initialize(config.parse.applicationId, config.parse.javascriptKey);
+    
+    return $window.Parse;
+  }]);

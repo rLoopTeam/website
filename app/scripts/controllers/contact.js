@@ -8,88 +8,84 @@
  * Controller of the rLoop
  */
 angular.module('rLoop')
-  .controller('ContactCtrl', function ($scope, vcRecaptchaService, $http, $location) {
+  .controller('ContactCtrl', function ($scope, vcRecaptchaService, Parse, $location, $q, myexternalip, config) {
     
     //RECAPTCHA STUFF
     $scope.captcha = {
+      key: config.reCaptcha.key,
       response: null,
       widgetId: null,
       $error: null,
-      invalid: null
+      invalid: null,
+      setResponse: function (response) {
+        $scope.captcha.response = response;
+      },
+      setWidgetId: function (widgetId) {
+        $scope.captcha.widgetId = widgetId;
+      },
+      cbExpiration: function() {
+        $scope.captcha.response = null;
+      }
     };
-
-    $scope.setResponse = function (response) {
-      $scope.captcha.response = response;
-    };
-    $scope.setWidgetId = function (widgetId) {
-      $scope.captcha.widgetId = widgetId;
-    };
-    $scope.cbExpiration = function() {
-      $scope.captcha.response = null;
-    };
-    //--END RECAPTCHA
-
-    // Required - set to 'success' or 'error' on success/failure
-    $scope.result = null;
-    $scope.isSubmitting = null;
-    $scope.options = {
-      buttonSizeClass: 'btn-lg',
-      buttonSuccessClass: 'btn-success'
+    
+    //SUBMIT BUTTON STUFF
+    $scope.submitBtn = {
+      result: null, // Required - set to 'success' or 'error' on success/failure
+      isSubmitting: null,
+      options: {
+        buttonSizeClass: 'btn-lg',
+        buttonSuccessClass: 'btn-success'
+      }
     };
 
     $scope.submit = function () {
+      var submitDeferred = $q.defer();
+
       if($scope.contactForm.$invalid || !$scope.captcha.response){
-        return;
+        submitDeferred.reject('invalid_form');
+        return submitDeferred.promise;
       }
+
       $scope.isSubmitting = true;
       $scope.captcha.invalid = null;
       $scope.captcha.error = null;
 
-      var req_get_ip = 'http://ipv4.myexternalip.com/json';
-      $http.get(req_get_ip).then(function(req_get_ip_result) {
-        var ip = req_get_ip_result.data.ip;
-        Parse.initialize("pwJsGYPUihWxSmbqPe4V5ye6UpwGY8seMvHgp7Rz", "GSXWyRTCGRZasFHd6ZaRI2bzZGhhxGuj7OZFdchW");
-        
-        var ContactRequest = Parse.Object.extend("ContactRequest");
+      myexternalip.getIp().then(function(ip) {
+        var ContactRequest = Parse.Object.extend('ContactRequest');
         var contactRequest = new ContactRequest();
 
-        contactRequest.set("mail", $scope.contact.mail);
-        contactRequest.set("name", $scope.contact.name);
-        contactRequest.set("message", $scope.contact.message);
-        contactRequest.set("ip", ip);
-        contactRequest.set("recaptchaData", $scope.captcha.response);
+        contactRequest.set('mail', $scope.contact.mail);
+        contactRequest.set('name', $scope.contact.name);
+        contactRequest.set('message', $scope.contact.message);
+        contactRequest.set('ip', ip);
+        contactRequest.set('recaptchaData', $scope.captcha.response);
 
         return contactRequest.save();
       }, function() {
         //fail to get IP
-        $scope.result = "error";
+        $scope.result = 'error';
       })
 
-      .then(function() {
+      .then(function(newobj) {
         $scope.isSubmitting = false;
-        $scope.result = "success";
-        $scope.contact.mail = "";
-        $scope.contact.name = "";
-        $scope.contact.message = "";
+        $scope.result = 'success';
+        $scope.contact.mail = '';
+        $scope.contact.name = '';
+        $scope.contact.message = '';
         vcRecaptchaService.reload($scope.captcha.widgetId);
-        $location.path("/contact-thankyou");
-      }, function(newobj, error) {
-        $scope.result = "error";
-        //fail to persist
-        if (error.message === "captcha_fail"){
-          $scope.captcha.invalid = true;
-          $scope.captcha.error = "invalid";
-        }
-      })
+        submitDeferred.resolve(newobj);
 
-      .finally(function(){
-        $scope.isSubmitting = false;
+        $location.path('/contact-thankyou');
+      }, function(newobj, error) {
+        $scope.result = 'error';
+        //fail to persist
+        if (error.message === 'captcha_fail'){
+          $scope.captcha.invalid = true;
+          $scope.captcha.error = 'invalid';
+        }
       });
+
+      return submitDeferred.promise;
     };
 
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
   });

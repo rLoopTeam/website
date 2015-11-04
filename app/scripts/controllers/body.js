@@ -10,6 +10,6 @@
 angular.module('rLoop')
   .controller('BodyCtrl', function ($scope, $location) {
   	$scope.isHome = function () { 
-        return $location.path() === "/";
+        return $location.path() === '/';
     };
   });

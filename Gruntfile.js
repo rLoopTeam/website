@@ -16,7 +16,8 @@ module.exports = function (grunt) {
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
-    cdnify: 'grunt-google-cdn'
+    cdnify: 'grunt-google-cdn',
+    ngconstant: 'grunt-ng-constant'
   });
 
   // Configurable paths for the application
@@ -461,6 +462,43 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
+    },  
+
+    // Share some constants with Agular
+    ngconstant: {
+      options: {
+        dest: '<%= yeoman.app %>/scripts/config.js',
+        wrap: '\'use strict\'; \n\n {%= __ngModule %}',
+        name: 'config'
+      },
+      server: {
+        constants: {
+          config: {
+            ENV: 'dev',
+            reCaptcha: {
+              key: '6LdEOBATAAAAAATunIIVBuDIsthNYszmg9LNrEyv'
+            },
+            parse: {
+              applicationId: 'pwJsGYPUihWxSmbqPe4V5ye6UpwGY8seMvHgp7Rz',
+              javascriptKey: 'GSXWyRTCGRZasFHd6ZaRI2bzZGhhxGuj7OZFdchW'
+            }
+          }
+        }
+      },
+      dist: {
+        constants: {
+          config: {
+            ENV: 'dev',
+            reCaptcha: {
+              key: '6LdEOBATAAAAAATunIIVBuDIsthNYszmg9LNrEyv'
+            },
+            parse: {
+              applicationId: 'pwJsGYPUihWxSmbqPe4V5ye6UpwGY8seMvHgp7Rz',
+              javascriptKey: 'GSXWyRTCGRZasFHd6ZaRI2bzZGhhxGuj7OZFdchW'
+            }
+          }
+        }
+      }
     }
   });
 
@@ -472,6 +510,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'ngconstant:server',
       'wiredep',
       'concurrent:server',
       'postcss:server',
@@ -487,6 +526,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
+    'ngconstant:server',
     'wiredep',
     'concurrent:test',
     'postcss',

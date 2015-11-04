@@ -10,6 +10,7 @@
  */
 angular
   .module('rLoop', [
+    'config',
     'ngAnimate',
     'ngCookies',
     'ngMessages',
