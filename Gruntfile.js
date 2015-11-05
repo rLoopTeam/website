@@ -488,7 +488,7 @@ module.exports = function (grunt) {
       dist: {
         constants: {
           config: {
-            ENV: 'dev',
+            ENV: 'prod',
             reCaptcha: {
               key: '6LdEOBATAAAAAATunIIVBuDIsthNYszmg9LNrEyv'
             },
@@ -536,6 +536,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('build', [
     'clean:dist',
+    'ngconstant:dist',
     'wiredep',
     'useminPrepare',
     'concurrent:dist',
