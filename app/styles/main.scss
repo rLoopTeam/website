@@ -12,6 +12,8 @@ $navbar-default-link-active-bg:            transaparent;
 @import "font-awesome/scss/font-awesome.scss";
 // endbower
 
+@import "animations";
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -35,6 +37,7 @@ body {
   padding: 8px 64px;
   font-size: 14px;
   font-weight: 200;
+  z-index: 100;
   li > a {
     text-transform: uppercase;
   }
