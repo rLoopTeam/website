@@ -17,7 +17,8 @@ module.exports = function (grunt) {
     useminPrepare: 'grunt-usemin',
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn',
-    ngconstant: 'grunt-ng-constant'
+    ngconstant: 'grunt-ng-constant',
+    buildGhPages: 'grunt-build-gh-pages'
   });
 
   // Configurable paths for the application
@@ -31,7 +32,11 @@ module.exports = function (grunt) {
 
     // Project settings
     yeoman: appConfig,
-
+    buildGhPages: {
+      ghPages: {
+      // Leave empty if you just want to run the defaults
+      }
+    },
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       bower: {
@@ -431,6 +436,16 @@ module.exports = function (grunt) {
           cwd: '.',
           src: 'bower_components/font-awesome/fonts/*',
           dest: '<%= yeoman.dist %>'
+        }, {
+          expand: false,
+          cwd: '.',
+          src: '.env',
+          dest: '<%= yeoman.dist %>/.env'
+        }, {
+          expand: false,
+          cwd: '.',
+          src: '.static',
+          dest: '<%= yeoman.dist %>/.static'
         }]
       },
       styles: {
@@ -553,6 +568,10 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
+  grunt.registerTask('deploy-static', [
+    'buildGhPages'
+  ]);
+  
   grunt.registerTask('default', [
     'newer:jshint',
     'newer:jscs',

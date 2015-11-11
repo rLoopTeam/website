@@ -1,3 +1,5 @@
+/* global done */
+
 'use strict';
 
 describe('Controller: ContactCtrl', function () {
@@ -9,7 +11,7 @@ describe('Controller: ContactCtrl', function () {
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope, $q, _vcRecaptchaService_, _myexternalip_) {
+  beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
     ContactCtrl = $controller('ContactCtrl', {
       $scope: scope
@@ -25,7 +27,7 @@ describe('Controller: ContactCtrl', function () {
     
     scope.submit().then(function(){
       done(new Error('Form submit should not resolve'));
-    }, function(response){
+    }, function(){
       done();
     });
   });

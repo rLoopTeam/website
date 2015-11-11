@@ -10,7 +10,7 @@ describe('Controller: HeaderNavCtrl', function () {
 
   //a stupid mock of $location.path
   var location = {
-    _path: "",
+    _path: '',
     path: function(){
       return this._path;
     }
@@ -26,16 +26,16 @@ describe('Controller: HeaderNavCtrl', function () {
   }));
 
   it('should have a isActive function', function () {
-    expect(typeof scope.isActive).toBe("function");
+    expect(typeof scope.isActive).toBe('function');
   });
 
   it('should return true when the location begins with a given string', function () {
-    location._path = "/test";
-    expect(scope.isActive("/test")).toBeTrue();
-    location._path = "/test?some=params";
-    expect(scope.isActive("/test")).toBeTrue();
-    location._path = "/atest?some=params";
-    expect(scope.isActive("/test")).toBeFalse();
+    location._path = '/test';
+    expect(scope.isActive('/test')).toBeTrue();
+    location._path = '/test?some=params';
+    expect(scope.isActive('/test')).toBeTrue();
+    location._path = '/atest?some=params';
+    expect(scope.isActive('/test')).toBeFalse();
     
     
   });
