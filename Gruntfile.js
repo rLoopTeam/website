@@ -36,7 +36,9 @@ module.exports = function (grunt) {
       options: {
         base: 'dist',
         dotfiles: true,
-        push:false
+        branch: 'master',
+        repo: 'dokku@rloop.org:website',
+        clone: '.tmp/grunt-gh-pages/gh-pages/repo'
       },
       src: '**/*'
     },
@@ -70,7 +72,7 @@ module.exports = function (grunt) {
         },
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
-          '.tmp/styles/{,*/}*.css',
+          '.tmp/connect/styles/{,*/}*.css',
           '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
@@ -89,7 +91,7 @@ module.exports = function (grunt) {
           open: true,
           middleware: function (connect) {
             return [
-              connect.static('.tmp'),
+              connect.static('.tmp/connect'),
               connect().use(
                 '/bower_components',
                 connect.static('./bower_components')
@@ -108,7 +110,7 @@ module.exports = function (grunt) {
           port: 9001,
           middleware: function (connect) {
             return [
-              connect.static('.tmp'),
+              connect.static('.tmp/connect'),
               connect.static('test'),
               connect().use(
                 '/bower_components',
@@ -192,17 +194,17 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: '.tmp/styles/',
+          cwd: '.tmp/connect/styles/',
           src: '{,*/}*.css',
-          dest: '.tmp/styles/'
+          dest: '.tmp/connect/styles/'
         }]
       },
       dist: {
         files: [{
           expand: true,
-          cwd: '.tmp/styles/',
+          cwd: '.tmp/connect/styles/',
           src: '{,*/}*.css',
-          dest: '.tmp/styles/'
+          dest: '.tmp/connect/styles/'
         }]
       }
     },
@@ -239,8 +241,8 @@ module.exports = function (grunt) {
     compass: {
       options: {
         sassDir: '<%= yeoman.app %>/styles',
-        cssDir: '.tmp/styles',
-        generatedImagesDir: '.tmp/images/generated',
+        cssDir: '.tmp/connect/styles',
+        generatedImagesDir: '.tmp/connect/images/generated',
         imagesDir: '<%= yeoman.app %>/images',
         javascriptsDir: '<%= yeoman.app %>/scripts',
         fontsDir: '<%= yeoman.app %>/styles/fonts',
@@ -320,7 +322,7 @@ module.exports = function (grunt) {
     //   dist: {
     //     files: {
     //       '<%= yeoman.dist %>/styles/main.css': [
-    //         '.tmp/styles/{,*/}*.css'
+    //         '.tmp/connect/styles/{,*/}*.css'
     //       ]
     //     }
     //   }
@@ -426,7 +428,7 @@ module.exports = function (grunt) {
           ]
         }, {
           expand: true,
-          cwd: '.tmp/images',
+          cwd: '.tmp/connect/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
         }, {
@@ -454,7 +456,7 @@ module.exports = function (grunt) {
       styles: {
         expand: true,
         cwd: '<%= yeoman.app %>/styles',
-        dest: '.tmp/styles/',
+        dest: '.tmp/connect/styles/',
         src: '{,*/}*.css'
       }
     },
@@ -571,7 +573,7 @@ module.exports = function (grunt) {
     'htmlmin'
   ]);
 
-  grunt.registerTask('deploy-static', [
+  grunt.registerTask('deploy', [
     'gh-pages'
   ]);
   
