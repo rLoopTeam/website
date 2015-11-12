@@ -18,7 +18,7 @@ module.exports = function (grunt) {
     ngtemplates: 'grunt-angular-templates',
     cdnify: 'grunt-google-cdn',
     ngconstant: 'grunt-ng-constant',
-    buildGhPages: 'grunt-build-gh-pages'
+    ghPages: 'grunt-gh-pages'
   });
 
   // Configurable paths for the application
@@ -32,10 +32,13 @@ module.exports = function (grunt) {
 
     // Project settings
     yeoman: appConfig,
-    buildGhPages: {
-      ghPages: {
-      // Leave empty if you just want to run the defaults
-      }
+    ghPages: {
+      options: {
+        base: 'dist',
+        dotfiles: true,
+        push:false
+      },
+      src: '**/*'
     },
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -569,7 +572,7 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('deploy-static', [
-    'buildGhPages'
+    'ghPages'
   ]);
   
   grunt.registerTask('default', [
