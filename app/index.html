@@ -6,7 +6,6 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/ng-bs-animated-button/ng-bs-animated-button.css" />
     <!-- endbower -->
@@ -55,12 +54,14 @@
       </div>
     </div>
 
-    <div ng-view="" class="main-content"></div>
+    <div class="transition-animation-container">
+      <div ng-view="" class="main-content fade"></div>
+    </div>
 
     <footer class="navbar">
       <ul class="nav nav-pills">
         <li><a href="https://reddit.com/r/rLoop"><i class="fa fa-reddit"></i></a></li>
-        <li><a href="https://www.youtube.com/channel/UCGLdvsNn9tc9oths23pRG5g"><i class="fa fa-youtube"></i></a></li>
+        <li><a href="https://www.youtube.com/channel/UCFxqcu0vH567d1F09xso8Tg"><i class="fa fa-youtube"></i></a></li>
         <li><a href="https://twitter.com/rLoopTeam"><i class="fa fa-twitter"></i></a></li>
         <li><a href="https://facebook.com/rloopteam"><i class="fa fa-facebook"></i></a></li>
       </ul>
