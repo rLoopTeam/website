@@ -40,17 +40,8 @@ module.exports = function (grunt) {
         clone: '.tmp/grunt-gh-pages/gh-pages/repo',
         repo: 'dokku@rloop.org:website'
       },
-      src: '**/*',
-      test: {
-        options: {
-          base: 'dist',
-          dotfiles: true,
-          branch: 'master',
-          clone: '.tmp/grunt-gh-pages/gh-pages/repo',
-          repo: 'dokku@mywebofthings.com:rloop'
-        },
-        src: '**/*'
-      }
+      src: '**/*'
+    
     },
     // Watches files for changes and runs tasks based on the changed files
     watch: {

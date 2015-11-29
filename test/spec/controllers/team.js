@@ -18,6 +18,6 @@ describe('Controller: TeamCtrl', function () {
   }));
 
   it('should attach a list of teamMembers to the scope', function () {
-    expect(scope.teamMembers.toBeArray())
+    expect(scope.teamMembers).toBeArray();
   });
 });
