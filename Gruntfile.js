@@ -33,14 +33,22 @@ module.exports = function (grunt) {
     // Project settings
     yeoman: appConfig,
     'gh-pages': {
-      options: {
-        base: 'dist',
-        dotfiles: true,
-        branch: 'master',
-        clone: '.tmp/grunt-gh-pages/gh-pages/repo',
-        repo: 'dokku@rloop.org:website'
+      prod: {
+        options: {
+          base: 'dist',
+          dotfiles: true,
+          branch: 'master',
+          repo: 'dokku@rloop.org:website'
+        },
+        src: '**/*'  
       },
-      src: '**/*'
+      backup: {
+        options: {
+          base: 'dist',
+          dotfiles: true
+        },
+        src: '**/*'
+      }
     
     },
     // Watches files for changes and runs tasks based on the changed files
@@ -174,6 +182,7 @@ module.exports = function (grunt) {
           dot: true,
           src: [
             '.tmp',
+            '.grunt',
             '<%= yeoman.dist %>/{,*/}*',
             '!<%= yeoman.dist %>/.git{,*/}*'
           ]
@@ -575,11 +584,8 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('deploy', [
-    'gh-pages'
-  ]);
-
-  grunt.registerTask('deploy-test', [
-    'gh-pages:test'
+    'gh-pages:prod',
+    'gh-pages:backup'
   ]);
   
   grunt.registerTask('default', [
