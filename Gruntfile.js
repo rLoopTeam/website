@@ -37,10 +37,20 @@ module.exports = function (grunt) {
         base: 'dist',
         dotfiles: true,
         branch: 'master',
-        repo: 'dokku@rloop.org:website',
-        clone: '.tmp/grunt-gh-pages/gh-pages/repo'
+        clone: '.tmp/grunt-gh-pages/gh-pages/repo',
+        repo: 'dokku@rloop.org:website'
       },
-      src: '**/*'
+      src: '**/*',
+      test: {
+        options: {
+          base: 'dist',
+          dotfiles: true,
+          branch: 'master',
+          clone: '.tmp/grunt-gh-pages/gh-pages/repo',
+          repo: 'dokku@mywebofthings.com:rloop'
+        },
+        src: '**/*'
+      }
     },
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -575,6 +585,10 @@ module.exports = function (grunt) {
 
   grunt.registerTask('deploy', [
     'gh-pages'
+  ]);
+
+  grunt.registerTask('deploy-test', [
+    'gh-pages:test'
   ]);
   
   grunt.registerTask('default', [

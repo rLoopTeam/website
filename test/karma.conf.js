@@ -37,6 +37,7 @@ module.exports = function(config) {
       'bower_components/angular-recaptcha/release/angular-recaptcha.js',
       'bower_components/parse/parse.min.js',
       'bower_components/ng-bs-animated-button/ng-bs-animated-button.js',
+      'bower_components/underscore/underscore.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

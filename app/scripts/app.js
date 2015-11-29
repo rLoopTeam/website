@@ -49,6 +49,11 @@ angular
         controller: 'ContactThankyouCtrl',
         controllerAs: 'contact-thankyou'
       })
+      .when('/team', {
+        templateUrl: 'views/team.html',
+        controller: 'TeamCtrl',
+        controllerAs: 'team'
+      })
       .otherwise({
         redirectTo: '/'
       });

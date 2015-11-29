@@ -1,0 +1,18 @@
+
+<div class="container">
+	<h1>Team</h1>
+
+	<div class="team-list">
+		<div ng-repeat="member in teamMembers" ng-if="$index % 3 == 0" class="row">
+		    <div class="col-xs-12 col-md-4">
+		    	<img src="{{teamMembers[$index].picture }}" alt="{{teamMembers[$index].name }}" /> <h4>{{teamMembers[$index].name }}</h4> <b>{{teamMembers[$index].role }}</b>, <i>{{teamMembers[$index].nationality }}</i>
+		    </div>
+		    <div class="col-xs-12 col-md-4" ng-if="$index+1 < teamMembers.length">
+		    	<img src="{{teamMembers[$index+1].picture }}" alt="{{teamMembers[$index+1].name }}" /> <h4>{{teamMembers[$index+1].name }}</h4> <b>{{teamMembers[$index+1].role }}</b>, <i>{{teamMembers[$index+1].nationality }}</i>
+		    </div>
+		    <div class="col-xs-12 col-md-4" ng-if="$index+2 < teamMembers.length">
+		    	<img src="{{teamMembers[$index+2].picture }}" alt="{{teamMembers[$index+2].name }}" /> <h4>{{teamMembers[$index+2].name }}</h4> <b>{{teamMembers[$index+2].role }}</b>, <i>{{teamMembers[$index+2].nationality }}</i>
+		    </div>
+		</div>
+	</div>
+</div>
