@@ -43,7 +43,7 @@ angular.module('rLoop')
       {
       	name: 'Kyle Zienin',
       	nationality: 'USA',
-      	role: 'Syst. Lead',
+      	role: 'Systems Engineering Lead',
       	picture: 'images/team/kzl.png'
       },
       {
@@ -78,7 +78,7 @@ angular.module('rLoop')
       },
       {
       	name: 'Michael Cook',
-      	nationality: 'New Zeland',
+      	nationality: 'New Zealand',
       	role: 'Mechanical Lead',
       	picture: 'images/team/mco.png'
       }
