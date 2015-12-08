@@ -9,12 +9,12 @@
  */
 angular.module('rLoop')
   .controller('TeamCtrl', function ($scope, underscore) {
-    $scope.teamMembers = [
+    var teamMembers = [
       {
       	name: 'Andrew Ouimette',
       	nationality: 'USA',
       	role: 'R&D Lead',
-      	picture: 'images/team/aou.png'
+      	picture: 'images/team/aou.png',
       },
       {
       	name: 'Andy Woerpel',
@@ -32,13 +32,15 @@ angular.module('rLoop')
       	name: 'Brent Lessard',
       	nationality: 'Canada',
       	role: 'Project Manager',
-      	picture: 'images/team/ble.png'
+      	picture: 'images/team/ble.png',
+            prio: 1
       },
       {
       	name: 'Daniel Hunter',
       	nationality: 'USA',
       	role: 'Assistant Project Manager',
-      	picture: 'images/team/dhu.png'
+      	picture: 'images/team/dhu.png',
+            prio: 2
       },
       {
       	name: 'Kyle Zienin',
@@ -62,7 +64,8 @@ angular.module('rLoop')
       	name: 'Richard P. Behiel',
       	nationality: 'USA',
       	role: 'PR Lead',
-      	picture: 'images/team/rbe.png'
+      	picture: 'images/team/rbe.png',
+            prio: 100
       },
       {
       	name: 'Scott Leonard',
@@ -74,18 +77,25 @@ angular.module('rLoop')
       	name: 'Thomas Lambot',
       	nationality: 'Belgium',
       	role: 'Engineering Lead',
-      	picture: 'images/team/tla.png'
+      	picture: 'images/team/tla.png',
+            prio: 3
       },
       {
       	name: 'Michael Cook',
       	nationality: 'New Zealand',
       	role: 'Mechanical Lead',
       	picture: 'images/team/mco.png'
+      },
+      {
+            name: 'Shabab Hussain',
+            nationality: 'Hong Kong',
+            role: 'Visualisation Lead',
+            picture: 'images/team/shu.png'
       }
     ];
 
     //sort by last name
-    underscore.sortBy($scope.teamMembers, function(o){
-    	return o.name;
+    $scope.teamMembers = underscore.sortBy(teamMembers, function(o){
+      return o.prio || 50;
     });
   });
