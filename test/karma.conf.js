@@ -35,11 +35,11 @@ module.exports = function(config) {
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-recaptcha/release/angular-recaptcha.js',
-      'bower_components/parse/parse.min.js',
       'bower_components/ng-bs-animated-button/ng-bs-animated-button.js',
       'bower_components/underscore/underscore.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
+      'bower_components/parse/parse.js',
       "app/scripts/**/*.js",
       "test/mock/**/*.js",
       "test/spec/**/*.js"
