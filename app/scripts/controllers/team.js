@@ -75,7 +75,7 @@ angular.module('rLoop')
       },
       {
       	name: 'Thomas Lambot',
-      	nationality: 'Belgium',
+      	nationality: 'Belgium/USA',
       	role: 'Engineering Lead',
       	picture: 'images/team/tla.png',
             prio: 3
