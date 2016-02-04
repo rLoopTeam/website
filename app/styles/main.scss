@@ -101,30 +101,29 @@ footer.navbar{
     }
 }
 
-.jumbotron{
-  background-color: transparent;
+.jumbotron {
+  position: absolute;
+  margin-top: 50px;
+  margin-bottom: 60px;
+  padding: 0;
+  margin: 0;
   height: 50em;
-  padding-top: 9em;
-  margin-bottom: 2em;
-  color: #FFF;
-  text-align: center;
+  max-height: 50em;
+  width: 100%;
+  background-color: rgba(190,190,190,0.5);
 
-  p.lead {
-    margin-bottom: 15px;
-    font-size: 1.2em;
-    width: 45%;
-    text-align: left;
-    text-transform: uppercase;
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 12px 20px 12px 10%;
-    font-weight: 200;
-    border-radius: 0px 5px 5px 0px;
-    @media (max-width: $screen-sm-max) {
-      width:100%;
-      padding: 2px 5px;
-      border: none;
-      text-align: center;
-    }
+  iframe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+    height: 75%;
+    width: 58%;
+    overflow: hidden;
+    opacity: 1;
+  }
+  .cover{
+    background-color: blue;
   }
 }
 
