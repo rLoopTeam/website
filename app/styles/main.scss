@@ -145,3 +145,27 @@ footer.navbar{
     margin-bottom: 2em;
   }
 }
+
+// Media stuff.
+.media-object {
+  display: block;
+  // width: auto;
+  width: 100px;
+  height: auto;
+
+  // Fix collapse in webkit from max-width: 100% and display: table-cell.
+  &.img-thumbnail {
+    max-width: none;
+  }
+}
+
+.media-left{
+  padding-right: 20px;
+}
+
+.media-left,
+.media-right,
+.media-body {
+  display: table-cell;
+  vertical-align: middle;
+}
